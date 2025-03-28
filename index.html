@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet the Team</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Team section -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Meet the Team</h1>
+    <div class="row justify-content-center" id="team-container">
+      <!-- Team cards will be dynamically injected here -->
+    </div>
+  </div>
+
+  <script>
+    // Generate and inject team cards into the page
+    function generateTeamCards() {
+      const container = document.getElementById('team-container');
+      teamMembers.forEach(member => {
+        const cardHTML = `
+          <div class="col-md-4 mb-4">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="${member.photo}" alt="${member.name}" class="card-img-top">
+                </div>
+                <div class="flip-card-back d-flex flex-column">
+                  <h1>${member.name}</h1>
+                  <p>${member.role}</p>
+                  <p>${member.bio}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        container.innerHTML += cardHTML;
+      });
+    }
+
+    // Call the function to generate and display team cards when the page loads
+    window.onload = generateTeamCards;
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
